@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png" />
+  <title>Tip calculator app</title>
+  <link rel="stylesheet" href="./css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+    integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <main class="layout">
+    <img class="logo" src="./images/logo.svg" alt="Logo">
+    <div class="main-panel">
+      <div class="calculator-box">
+        <div class="bill">
+          <p class="bill__title">Bill</p>
+          <input id="bill" class="bill__amount" type="amount" placeholder="0">
+          <img class="bill__img" src="./images/icon-dollar.svg" alt="">
+        </div>
+        <div class="select-tip">
+          <p class="select-tip__title">Select Tip %</p>
+          <div id="select_tip" class="select-tip__actions">
+            <button class="btn">5%</button>
+            <button class="btn">10%</button>
+            <button class="btn">15%</button>
+            <button class="btn">25%</button>
+            <button class="btn">50%</button>
+            <input id="custom_tip" class="select-tip__custom" type="text" placeholder="Custom">
+          </div>
+        </div>
+        <div class="select-people">
+          <p class="select-people__title">Number of People</p>
+          <input id="people_selection" class="select-people__input" type="" placeholder="0">
+          <img class="select-people__img" src="./images/icon-person.svg" alt="">
+        </div>
+      </div>
+      <div class="panel">
+
+        <div class="panel__info">
+          <div>
+            <p class="panel__tip">Tip Amount</p>
+            <p class="panel__person">/person</p>
+          </div>
+          <p id="tip_amount" class="panel__sum">$0.00</p>
+        </div>
+
+        <div class="panel__info">
+          <div>
+            <p class="panel__total">Total</p>
+            <p class="panel__person">/person</p>
+          </div>
+          <p id="total_sum" class="panel__sum">$0.00</p>
+        </div>
+
+        <button id="reset_btn" class="panel__reset">Reset</button>
+      </div>
+    </div>
+    </div>
+    </div>
+  </main>
+  <script src="./index.js" defer></script>
+</body>
+
+</html>

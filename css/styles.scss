@@ -1,0 +1,380 @@
+@import "./variables";
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  background-color: #c5e4e7;
+  height: 100vh;
+  font-family: "Space Mono", monospace;
+}
+
+.lay {
+  padding-top: 10px;
+}
+
+.layout {
+  background-color: #c5e4e7;
+  height: 100vh;
+}
+
+.logo {
+  display: block;
+  margin: 0 auto;
+  padding: 15vh 0 5rem;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+
+  @include large-screen {
+    padding: 5vh 0;
+  }
+}
+
+.main-panel {
+  background-color: #ffffff;
+  border-radius: 30px;
+  display: flex;
+  max-width: 810px;
+  height: 430px;
+  margin: 0 auto;
+  padding: 2rem;
+
+  @include large-screen {
+    flex-direction: column;
+    max-width: 30rem;
+    height: auto;
+    border-radius: 20px 20px 0 0;
+  }
+
+  .calculator-box {
+    flex: 1;
+    padding: 1.5rem;
+
+    .bill {
+
+      &__title {
+        font-weight: 700;
+        color: #5e7a7d;
+        position: relative;
+        display: flex;
+        flex-wrap: wrap;
+      }
+
+      &__amount {
+        background-color: #f4fafa;
+        height: 2.2rem;
+        text-align: right;
+        font-size: 25px;
+        color: #00494d;
+        font-weight: 700;
+        border: 0;
+        border-radius: 10px;
+        width: 100%;
+        padding: 0 0.5rem;
+        margin-top: 1rem;
+        box-sizing: border-box;
+        outline: none;
+
+        &.valid {
+          border: 3px solid aqua;
+        }
+
+        &.invalid {
+          border: 3px solid rgb(255, 0, 0);
+        }
+      }
+
+      &__img {
+        position: absolute;
+        display: flex;
+        margin: -28px 0 0 10px;
+        user-select: none;
+        -moz-user-select: none;
+        -webkit-user-drag: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+      }
+    }
+
+    .select-tip {
+      margin-top: 3rem;
+
+      &__title {
+        font-weight: 700;
+        color: #5e7a7d;
+      }
+
+      &__actions {
+        display: flex;
+        align-content: flex-start;
+        flex-wrap: wrap;
+        margin-top: 1rem;
+
+        .btn {
+          color: #ffffff;
+          text-decoration: none;
+          border-radius: 5px;
+          border: 2px solid #00494d;
+          background-color: #00494d;
+          height: 3.1rem;
+          width: 6.5rem;
+          font-size: 20px;
+          font-weight: 700;
+          cursor: pointer;
+          transition: 0.2s ease;
+          margin: 0.15rem 0.4rem;
+
+          &.active {
+            background-color: #26c0ab;
+            border: 0;
+            color: #00494d;
+          }
+
+          @include large-screen {
+            width: 7.4rem;
+          }
+
+          &:hover {
+            background-color: #26c0ab;
+            border: 0;
+            color: #00494d;
+          }
+        }
+      }
+
+      &__custom {
+        background-color: #f4fafa;
+        height: 2.7rem;
+        width: 6.5rem;
+        text-align: right;
+        font-size: 25px;
+        color: #00494d;
+        font-weight: 700;
+        border: 0;
+        border-radius: 10px;
+        text-align: center;
+        margin: 0.15rem 0.4rem;
+        outline: none;
+
+        &.valid {
+          border: 2px solid rgb(0, 248, 248);
+        }
+
+        &.invalid {
+          border: 2px solid rgb(255, 0, 0);
+        }
+      }
+    }
+
+    .select-people {
+      margin-top: 3rem;
+      position: relative;
+
+      &__title {
+        font-weight: 700;
+        color: #5e7a7d;
+      }
+      &__img {
+        position: absolute;
+        display: flex;
+        margin: -28px 0 0 10px;
+        user-select: none;
+        -moz-user-select: none;
+        -webkit-user-drag: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+      }
+      &__input {
+        background-color: #f4fafa;
+        height: 2.2rem;
+        width: 100%;
+        text-align: right;
+        font-size: 25px;
+        color: #00494d;
+        font-weight: 700;
+        border: 0;
+        border-radius: 10px;
+        padding: 0 0.5rem;
+        margin-top: 1rem;
+        box-sizing: border-box;
+        outline: none;
+
+        &.valid {
+          border: 3px solid rgb(0, 248, 248);
+        }
+
+        &.invalid {
+          border: 3px solid rgb(255, 0, 0);
+        }
+      }
+
+    }
+  }
+  .panel {
+    flex: 1;
+    background-color: #00494d;
+    width: 50%;
+    height: 100%;
+    border-radius: 20px;
+
+    @include large-screen {
+      width: 100%;
+    }
+
+    &__info {
+      display: flex;
+      padding: 2rem 1rem;
+
+      .panel__sum {
+        color: #26c0ab;
+        font-size: 40px;
+        font-weight: 700;
+        display: flex;
+        justify-content: flex-end;
+        flex: 1;
+
+        @include large-screen {
+          padding-left: 5rem;
+        }
+      }
+
+      .panel__person {
+        color: #5e7a7d;
+        font-size: 14px;
+        font-weight: 700;
+        margin-top: 0.5rem;
+      }
+
+      .panel__tip {
+        color: #f4fafa;
+        font-weight: 700;
+      }
+
+      .panel__total {
+        color: #f4fafa;
+        font-weight: 700;
+      }
+    }
+
+    &__reset {
+      color: #7f9c9f;
+      text-decoration: none;
+      border-radius: 5px;
+      border: 2px solid #5e7a7d;
+      background-color: #5e7a7d;
+      height: 2.9rem;
+      width: 17rem;
+      font-size: 20px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.2s ease;
+      margin: 7.5rem auto 2rem;
+      display: block;
+
+      &:hover {
+        background-color: #26c0ab;
+        color: #00494d;
+        border: none;
+      }
+
+      @include large-screen {
+        margin: 1rem auto 1rem;
+      }
+    }
+  }
+}
