@@ -1,4 +1,4 @@
-const state = {
+const State = {
   INVALID: 'invalid',
   VALID: 'valid'
 }
@@ -11,87 +11,87 @@ const tipAmount = document.getElementById('tip_amount')
 const totalSum = document.getElementById('total_sum')
 
 const customTip = document.getElementById('custom_tip')
-customTip.addEventListener('change', (e) => {
-  customTip.classList.remove(state.INVALID)
-  customTip.classList.remove(state.VALID)
+customTip.addEventListener('change', e => {
+  customTip.classList.remove(State.INVALID)
+  customTip.classList.remove(State.VALID)
 
   if (isTipValid(customTip.value)) {
-    customTip.classList.add(state.VALID)
+    customTip.classList.add(State.VALID)
     tipBtnValue = customTip.value
   } else {
-    customTip.classList.add(state.INVALID)
+    customTip.classList.add(State.INVALID)
   }
   checkAmount()
 })
 
 const selectTip = document.getElementById('select_tip')
-selectTip.addEventListener('click', (e) => {
-  resetTip(selectTip)
-
+selectTip.addEventListener('click', e => {
+  resetSelectTipState(selectTip)
   resetInput(customTip)
 
   if (e.target.tagName !== BTN_TAG_NAME) return
-  // add active to a btn that was clicked
+
+  // add 'active' class to a btn that was clicked
   e.target.classList.add('active')
-  tipBtnValue = e.target.innerText.slice(0, e.target.innerText.length - 1);
+  tipBtnValue = e.target.innerText.slice(0, e.target.innerText.length - 1)
   checkAmount()
 })
 
-const bill = document.getElementById('bill');
-bill.addEventListener('change', (e) => {
-  bill.classList.remove(state.INVALID)
-  bill.classList.remove(state.VALID)
+const bill = document.getElementById('bill')
+bill.addEventListener('change', e => {
+  bill.classList.remove(State.INVALID)
+  bill.classList.remove(State.VALID)
 
   if (isBillValid(bill.value)) {
-    bill.classList.add(state.VALID)
+    bill.classList.add(State.VALID)
   } else {
-    bill.classList.add(state.INVALID)
-  }
-  checkAmount()
-});
-
-const peopleSelection = document.getElementById('people_selection');
-peopleSelection.addEventListener('change', (e) => {
-  peopleSelection.classList.remove(state.INVALID)
-  peopleSelection.classList.remove(state.VALID)
-
-  if (isPeopleSelectionValid(peopleSelection.value)) {
-    peopleSelection.classList.add(state.VALID)
-  } else {
-    peopleSelection.classList.add(state.INVALID);
+    bill.classList.add(State.INVALID)
   }
   checkAmount()
 })
 
-function isBillValid(bill) {
+const peopleSelection = document.getElementById('people_selection')
+peopleSelection.addEventListener('change', e => {
+  peopleSelection.classList.remove(State.INVALID)
+  peopleSelection.classList.remove(State.VALID)
+
+  if (isPeopleSelectionValid(peopleSelection.value)) {
+    peopleSelection.classList.add(State.VALID)
+  } else {
+    peopleSelection.classList.add(State.INVALID)
+  }
+  checkAmount()
+})
+
+function isBillValid (bill) {
   return bill > 0 && bill < 10_000
 }
 
-function isPeopleSelectionValid(peopleSelection) {
+function isPeopleSelectionValid (peopleSelection) {
   return peopleSelection > 0 && peopleSelection <= 20
 }
 
-function isTipValid(tip) {
+function isTipValid (tip) {
   return tip > 0 && tip <= 100
 }
 
-function checkAmount() {
-  if (!isBillValid(bill.value)) return 0
-  if (!isPeopleSelectionValid(peopleSelection.value)) return 0
-  if (!isTipValid(tipBtnValue)) return 0
-  const calcTip = bill.value * (tipBtnValue / 100) / peopleSelection.value
+function checkAmount () {
+  if (!isBillValid(bill.value)) return
+  if (!isPeopleSelectionValid(peopleSelection.value)) return
+  if (!isTipValid(tipBtnValue)) return
+  const calcTip = (bill.value * (tipBtnValue / 100)) / peopleSelection.value
   tipAmount.innerText = `$${calcTip.toFixed(2)}`
   const calcSum = bill.value / peopleSelection.value + calcTip
   totalSum.innerText = `$${calcSum.toFixed(2)}`
 }
 
-function resetInput(input) {
-  input.classList.remove(state.INVALID)
-  input.classList.remove(state.VALID)
+function resetInput (input) {
+  input.classList.remove(State.INVALID)
+  input.classList.remove(State.VALID)
   input.value = ''
 }
 
-function resetTip (selectTip) {
+function resetSelectTipState (selectTip) {
   const btns = selectTip.children
   for (i = 0; i < btns.length; i++) {
     if (btns[i].tagName !== BTN_TAG_NAME) continue
@@ -100,11 +100,11 @@ function resetTip (selectTip) {
 }
 
 const resetBtn = document.getElementById('reset_btn')
-resetBtn.addEventListener('click', (e) => {
+resetBtn.addEventListener('click', e => {
   resetInput(customTip)
-  resetInput(selectTip)
+  resetSelectTipState(selectTip)
   resetInput(bill)
   resetInput(peopleSelection)
-  tipAmount.innerText = "$0.00"
-  totalSum.innerText = "$0.00"
+  tipAmount.innerText = '$0.00'
+  totalSum.innerText = '$0.00'
 })
